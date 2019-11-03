@@ -1,11 +1,16 @@
 package com.gmail.egorovsonalexey.lesson1;
 
 import org.junit.Assert;
+import org.junit.Test;
 
-class HashMapTest {
+public class HashMapTest {
 
-    static void MyHashMapTest() {
+    @Test
+    public void myHashMapTest() {
         MyHashMap map = new MyHashMap();
+
+        assert map.get(1) == null;
+        assert !map.containsKey(1);
 
         for(int i = 0; i < 10; i++) {
             assert map.getCount() == i;
@@ -27,7 +32,8 @@ class HashMapTest {
         Assert.assertFalse(res);
     }
 
-    static void MyHashMapPutTest() {
+    @Test(expected = IllegalArgumentException.class)
+    public void myHashMapPutTest() {
         MyHashMap map = new MyHashMap();
         for(int i = 0; i < 10; i++) {
             map.put(i, i + 100);
@@ -36,7 +42,8 @@ class HashMapTest {
         map.put(5, 205);
     }
 
-    static void MyHashMapSetTest() {
+    @Test(expected = IllegalArgumentException.class)
+    public void myHashMapSetTest() {
         MyHashMap map = new MyHashMap();
         for(int i = 0; i < 10; i++) {
             map.put(i, i + 100);
@@ -45,7 +52,8 @@ class HashMapTest {
         map.set(10, 210);
     }
 
-    static void MyHashMapDeleteTest() {
+    @Test(expected = IllegalArgumentException.class)
+    public void myHashMapDeleteTest() {
         MyHashMap map = new MyHashMap();
         for(int i = 0; i < 10; i++) {
             map.put(i, i + 100);
@@ -54,7 +62,19 @@ class HashMapTest {
         map.delete(10);
     }
 
-    static void equalsHashTest() {
+    @Test
+    public void myHashMapGetTest() {
+        MyHashMap map = new MyHashMap();
+        SimpleHashClass key1 = new SimpleHashClass();
+        SimpleHashClass key2 = new SimpleHashClass();
+
+        map.put(key1, 1);
+
+        assert map.get(key2) == null;
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void equalsHashTest() {
         MyHashMap map = new MyHashMap();
         SimpleHashClass key1 = new SimpleHashClass();
         SimpleHashClass key2 = new SimpleHashClass();
@@ -68,7 +88,8 @@ class HashMapTest {
         map.delete(key1);
     }
 
-    static void equalsHashTest1() {
+    @Test
+    public void equalsHashTest1() {
         MyHashMap map = new MyHashMap();
         SimpleHashClass key1 = new SimpleHashClass();
         SimpleHashClass key2 = new SimpleHashClass();

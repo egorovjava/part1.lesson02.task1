@@ -35,9 +35,19 @@ public class App
                 System.out.print(item.getValue() + " ");
             }
         }
+
+        MyHashMap hmap = new MyHashMap();
+        System.out.println(hmap.containsKey(12));
+
+        for(int i = 0; i < 10; i++) {
+            hmap.put(i, i + 100);
+        }
+
         System.out.println();
         MyTreeHashMap map = new MyTreeHashMap();
-            for(int i = 0; i < 10; i += 2 ) {
+        map.get(12);
+
+        for(int i = 0; i < 10; i += 2 ) {
             map.put(i, i + 100);
         }
 

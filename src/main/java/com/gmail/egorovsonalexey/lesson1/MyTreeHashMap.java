@@ -1,7 +1,6 @@
 package com.gmail.egorovsonalexey.lesson1;
 
-class MyTreeHashMap implements IHashMap {
-
+class MyTreeHashMap implements HashMap {
 
     private int count;
     private TreeNode root;
@@ -15,6 +14,11 @@ class MyTreeHashMap implements IHashMap {
     }
 
     public void put(Object key, Object value) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         int hash = key.hashCode();
         TreeNode node = findKey(hash);
         if(node == null) {
@@ -50,6 +54,11 @@ class MyTreeHashMap implements IHashMap {
     }
 
     public Object get(Object key) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         int hash = key.hashCode();
         TreeNode keyNode = findKey(hash);
         if(keyNode != null && keyNode.value == hash && keyNode.bucket != null) {
@@ -62,6 +71,11 @@ class MyTreeHashMap implements IHashMap {
     }
 
     public void set(Object key, Object value) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         int hash = key.hashCode();
         TreeNode node = findKey(hash);
         if(node.value == hash) {
@@ -75,6 +89,11 @@ class MyTreeHashMap implements IHashMap {
     }
 
     public void delete(Object key) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         int hash = key.hashCode();
         TreeNode keyNode = findKey(hash);
         if(keyNode != null && keyNode.value == hash && keyNode.bucket != null) {
@@ -88,9 +107,14 @@ class MyTreeHashMap implements IHashMap {
     }
 
     public boolean containsKey(Object key) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         int hash = key.hashCode();
         TreeNode keyNode = findKey(hash);
-        if(keyNode.value == hash) {
+        if(keyNode != null && keyNode.value == hash) {
             MyLinkedList.MyLinkedListItem item = keyNode.bucket.search(key);
             return item != null;
         }

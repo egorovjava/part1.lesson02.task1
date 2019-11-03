@@ -1,12 +1,16 @@
 package com.gmail.egorovsonalexey.lesson1;
 
-import com.gmail.egorovsonalexey.lesson1.MyTreeHashMap;
 import org.junit.Assert;
+import org.junit.Test;
 
-class TreeHashMapTest {
+public class TreeHashMapTest {
 
-    static void MyTreeHashMapTest() {
+    @Test
+    public void myTreeHashMapTest() {
         MyTreeHashMap map = new MyTreeHashMap();
+
+        assert map.get(1) == null;
+        assert !map.containsKey(1);
 
         for(int i = 0; i < 10; i += 2) {
             //assert map.getCount() == i;
@@ -33,7 +37,8 @@ class TreeHashMapTest {
         Assert.assertFalse(res);
     }
 
-    static void MyTreeHashMapPutTest() {
+    @Test(expected = IllegalArgumentException.class)
+    public void myTreeHashMapPutTest() {
         MyTreeHashMap map = new MyTreeHashMap();
         for(int i = 0; i < 10; i++) {
             map.put(i, i + 100);
@@ -42,7 +47,20 @@ class TreeHashMapTest {
         map.put(5, 205);
     }
 
-    static void MyTreeHashMapSetTest() {
+    @Test
+    public void myTreeHashMapGetTest() {
+        MyTreeHashMap map = new MyTreeHashMap();
+        SimpleHashClass key1 = new SimpleHashClass();
+        SimpleHashClass key2 = new SimpleHashClass();
+
+        map.put(key1, 1);
+
+        assert map.get(key2) == null;
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void myTreeHashMapSetTest() {
         MyTreeHashMap map = new MyTreeHashMap();
         for(int i = 0; i < 10; i++) {
             map.put(i, i + 100);
@@ -51,7 +69,8 @@ class TreeHashMapTest {
         map.set(10, 210);
     }
 
-    static void MyTreeHashMapDeleteTest() {
+    @Test(expected = IllegalArgumentException.class)
+    public void myTreeHashMapDeleteTest() {
         MyTreeHashMap map = new MyTreeHashMap();
         for(int i = 0; i < 10; i++) {
             map.put(i, i + 100);
@@ -60,7 +79,8 @@ class TreeHashMapTest {
         map.delete(10);
     }
 
-    static void equalsHashTest() {
+    @Test(expected = IllegalArgumentException.class)
+    public void equalsHashTest() {
         MyTreeHashMap map = new MyTreeHashMap();
         SimpleHashClass key1 = new SimpleHashClass();
         SimpleHashClass key2 = new SimpleHashClass();
@@ -74,7 +94,8 @@ class TreeHashMapTest {
         map.delete(key1);
     }
 
-    static void equalsHashTest1() {
+    @Test
+    public void equalsHashTest1() {
         MyTreeHashMap map = new MyTreeHashMap();
         SimpleHashClass key1 = new SimpleHashClass();
         SimpleHashClass key2 = new SimpleHashClass();

@@ -1,6 +1,6 @@
 package com.gmail.egorovsonalexey.lesson1;
 
-public interface IHashMap {
+public interface HashMap {
     void put(Object key, Object value);
     Object get(Object key);
     void set(Object key, Object value);

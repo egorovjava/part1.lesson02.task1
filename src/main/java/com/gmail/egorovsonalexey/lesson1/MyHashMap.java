@@ -1,6 +1,6 @@
 package com.gmail.egorovsonalexey.lesson1;
 
-class MyHashMap implements IHashMap {
+class MyHashMap implements HashMap {
 
     private MyLinkedList[] data;
     private int count = 0;
@@ -11,6 +11,11 @@ class MyHashMap implements IHashMap {
     }
 
     public void put(Object key, Object value) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         int hash = key.hashCode();
         int index = hash >>> 16;
         if(data[index] == null) {
@@ -28,6 +33,11 @@ class MyHashMap implements IHashMap {
     }
 
     public Object get(Object key) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         MyLinkedList bucket = getBucket(key);
         if(bucket != null) {
             MyLinkedList.MyLinkedListItem item = bucket.search(key);
@@ -39,6 +49,11 @@ class MyHashMap implements IHashMap {
     }
 
     public void set(Object key, Object value) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         MyLinkedList bucket = getBucket(key);
         if(bucket != null) {
             MyLinkedList.MyLinkedListItem item = bucket.search(key);
@@ -51,6 +66,11 @@ class MyHashMap implements IHashMap {
     }
 
     public void delete(Object key) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         MyLinkedList bucket = getBucket(key);
         if(bucket != null) {
             boolean res = bucket.remove(key);
@@ -63,6 +83,11 @@ class MyHashMap implements IHashMap {
     }
 
     public boolean containsKey(Object key) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         MyLinkedList bucket = getBucket(key);
         if(bucket != null) {
             MyLinkedList.MyLinkedListItem item = bucket.search(key);
@@ -78,6 +103,11 @@ class MyHashMap implements IHashMap {
     }
 
     private MyLinkedList getBucket(Object key) {
+
+        if(key == null) {
+            throw new IllegalArgumentException("Key mast be not null.");
+        }
+
         int hash = key.hashCode();
         int index = hash >>> 16;
         return data[index];
